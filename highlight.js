@@ -17,10 +17,10 @@ function highlightText() {
 
 function testSelectedText(selectedText) 
 {
-    if (selectedText)
+    // testing 
+    return new TanachSource(Tanach.Ruth, 1, 1); 
 }
 
 document.onmouseup = highlightText;
 document.onkeyup = highlightText;
-
 
