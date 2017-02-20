@@ -8,14 +8,15 @@ function getSelectedText() {
     return text;
 }
 
-function highlightText() {
-    var selectedText = getSelectedText();
+function onTextHighlight() {
+    var selectedText = getSelectedText(); 
+
     if (selectedText) {
-        var e = testForSource(selectedText);
-        if (e) 
-            console.log(e.toString()); 
+        var source = testForSource(selectedText);
+        if (source)
+            console.log(source.toString());
     }
 }
 
-document.onmouseup = highlightText;
-document.onkeyup = highlightText;
+document.onmouseup = onTextHighlight;
+document.onkeyup = onTextHighlight;
