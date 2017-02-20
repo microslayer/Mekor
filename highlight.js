@@ -11,16 +11,11 @@ function getSelectedText() {
 function highlightText() {
     var selectedText = getSelectedText();
     if (selectedText) {
-        testSelectedText(selectedText); 
+        var e = testForSource(selectedText);
+        if (e) 
+            console.log(e.toString()); 
     }
-}
-
-function testSelectedText(selectedText) 
-{
-    // testing 
-    return new TanachSource(Tanach.Ruth, 1, 1); 
 }
 
 document.onmouseup = highlightText;
 document.onkeyup = highlightText;
-

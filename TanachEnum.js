@@ -1,7 +1,7 @@
 // English names used for unambiguity of spelling 
 // All books that have their own chapter system 
 
-var TanachObj = {
+var TanachKeyName = {
    // Torah
    "Genesis"      : 1, 
    "Exodus"       : 2, 
@@ -50,7 +50,39 @@ var TanachObj = {
    "Esther"       : 35, 
    "Ruth"         : 36, 
    "Lamentations" : 37, 
-   "Ruth"         : 38, 
+   "Ecclesiastes" : 38
+}; 
+
+var TanachKeyNum = createTanachKeyNum(); 
+
+var TanachObj = {
+   TanachKeyName : TanachKeyName, 
+   TanachKeyNum : TanachKeyNum, 
+
+   getBookNum : function(param) {
+      if (isNaN(param)) 
+      {
+         return TanachKeyName[param]; 
+      }
+      else 
+         return param; 
+   }, 
+
+   getBookFromNum : function(num)
+   {
+      // todo: null, isNaN checks 
+      return TanachKeyNum[num]; 
+   }
 }
+
+function createTanachKeyNum() {
+   var TanachKeyNum = { }; 
+
+   var TanachKeyNum = {}
+   for (key in TanachKeyName)
+    TanachKeyNum[TanachKeyName[key]] = key
+
+  return TanachKeyNum; 
+} 
 
 var Tanach = Object.freeze(TanachObj); 

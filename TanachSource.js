@@ -1,34 +1,35 @@
-function TanachSource(book, chapter, verse)
-{
-	this.book    = book; 
-	this.chapter = chapter; 
-	this.verse   = verse; 
+function TanachSource(book, chapter, verse) {
+	this.book = book; // book is a an enum number 
+	this.chapter = chapter;
+	this.verse = verse;
 }
 
 TanachSource.prototype = {
-	constructor : Source, 
+	constructor: TanachSource,
 
- 	toString : function() {
- 		var str = ""; 
+	invalidSource: false,
 
- 		// valid source must have book 
- 		if (!book)
- 		  throw new Error("Invalid source"); 
+	toString: function() {
+		var str = "";
 
- 	    str += book; 
+		// valid source must have book 
+		if (!this.book)
+			throw new Error("Invalid book");
 
- 	    if (chapter)
- 	    	str += (" " + chapter); 
+		str += Tanach.getBookFromNum(this.book);
 
- 	    if (verse) 
- 	    	str += (": " + verse); 
+		if (this.chapter)
+			str += (" " + this.chapter);
 
- 	    return str; 
- 	}, 
+		if (this.verse)
+			str += (":" + this.verse);
 
- 	equals : function(obj) {
- 		return obj.book    == this.book && 
- 			   obj.chapter == this.chapter && 
- 			   obj.verse   == this.verse; 
- 	}
+		return str;
+	},
+
+	equals: function(obj) {
+		return obj.book == this.book &&
+			obj.chapter == this.chapter &&
+			obj.verse == this.verse;
+	}
 }
