@@ -6,7 +6,7 @@
 var seferNames = {
 	"Genesis": [
 	"gen", "gn", 
-	"בראשית", "ber(e|a)ishis", "genesis",
+	"בראשית", "b(e|i)r(e|a)ishi(s|t)", "genesis",
 	"נח", "noach",
 	"לך לך", "lech lecha",
 	"וירא", "vay(a|e)ira",
@@ -118,4 +118,13 @@ var seferNames = {
 var keysArr = {};
 for(var key in seferNames)  {
 	keysArr[key] = seferNames[key].join("|");
+}; 
+
+// var allSeferNamesRegex = new RegExp(Object.values(keysArr).join("|"), "i"); // wait till Object.values is more supported
+var allSeferNames = ""; 
+for(key in keysArr) {
+	if(keysArr.hasOwnProperty(key)) {
+		allSeferNames += keysArr[key] + "|";
+	}
 }
+var allSeferNamesRegex = new RegExp(allSeferNames, "i");

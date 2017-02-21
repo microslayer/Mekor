@@ -1,9 +1,16 @@
 function testForSource(text) {
-    var arr = text.split(/[: "'.()-]/).filter(Boolean);
+    var arr = text.toLowerCase().split(/[: ;"'.()-]/).filter(Boolean);
 
+    if (!allSeferNamesRegex.test(text))
+    {
+        return null; 
+    }
+
+    // will always match first part of tanach in selection, no matter the order
     for (key of Object.keys(keysArr)) {
         var regexObj = new RegExp(keysArr[key], "i");
 
+        // optimize 
         if (regexObj.test(text)) {
 
             for (var i = 0; i < arr.length; i++) {
@@ -37,6 +44,5 @@ function testForSource(text) {
 
 function createNewSource(sefer, perek, pasuk) {
     var seferNum = Tanach.getBookNum(sefer);
-
     return new TanachSource(seferNum, perek, pasuk);
 }

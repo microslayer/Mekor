@@ -1,0 +1,32 @@
+#header {
+	width:250px;	
+	background-color:white;
+	outline: black solid 1px;
+	padding:10px;
+}
+
+.txt_rtl {
+	direction: rtl; 
+}
+
+#verse_source {
+	font-size:.9em;
+}
+
+.verse + .verse {
+	padding-top:10px;
+}
+
+#footer {
+	margin: 10px 0px; 
+	background-color:green;
+	font-size:.9em;
+}
+
+#f_options {
+	float:left;
+}
+
+#f_context {
+	float:right;
+}
