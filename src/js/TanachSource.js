@@ -1,4 +1,11 @@
 function TanachSource(book, chapter, verse) {
+	if (isNaN(book))
+		throw new Error("book must be number"); 
+	if (isNaN(chapter))
+		throw new Error("chapter must be number"); 
+	if (isNaN(verse))
+		throw new Error("verse must be number"); 
+
 	this.book = book; // book is a an enum number 
 	this.chapter = chapter;
 	this.verse = verse;

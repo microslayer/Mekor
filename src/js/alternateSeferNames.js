@@ -120,7 +120,9 @@ for(var key in seferNames)  {
 	keysArr[key] = seferNames[key].join("|");
 }; 
 
-// var allSeferNamesRegex = new RegExp(Object.values(keysArr).join("|"), "i"); // wait till Object.values is more supported
+// wait till Object.values is better supported
+// var allSeferNamesRegex = new RegExp(Object.values(keysArr).join("|"), "i"); 
+
 var allSeferNames = ""; 
 for(key in keysArr) {
 	if(keysArr.hasOwnProperty(key)) {

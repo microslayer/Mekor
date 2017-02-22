@@ -1,8 +1,18 @@
 #header {
-	width:250px;	
-	background-color:white;
-	outline: black solid 1px;
-	padding:10px;
+	font-family: 'Assistant', sans-serif;
+	font-size:15px;
+
+	width:280px;	
+
+	outline: 1px dotted black;
+	border: white solid 10px;
+	background-color: white;
+	color:#990000;
+
+	padding:15px;
+	position:fixed;
+	right:10;
+	top:10;
 }
 
 .txt_rtl {
@@ -10,23 +20,39 @@
 }
 
 #verse_source {
-	font-size:.9em;
+	font-weight: normal; 
+	margin-top:0px;
+	margin-bottom:20px;
+	font-size:18px;
+	text-transform: uppercase;
+}
+
+.verse {
+	background-color:#fffcfc;
+	font-size:15px;
+	padding:10px;
 }
 
 .verse + .verse {
-	padding-top:10px;
+	padding-top:15px;
+}
+
+.hover-underline:hover {
+	text-decoration: underline;
 }
 
 #footer {
-	margin: 10px 0px; 
+	margin: 15px 0px 0px 0px; 
 	background-color:green;
-	font-size:.9em;
+	font-size:14px;
 }
 
 #f_options {
 	float:left;
+	cursor:pointer;
 }
 
-#f_context {
+#f_context {	
+	cursor:pointer;
 	float:right;
 }

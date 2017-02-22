@@ -8,6 +8,7 @@ function getSelectedText() {
     return text;
 }
 
+var currTanachObj; 
 var sourceText, englishText, hebrewText, newSource;
 
 function onTextHighlight() {
@@ -19,6 +20,7 @@ function onTextHighlight() {
         if (source) {
             newSource = true;
             sourceText = "", englishText = "", hebrewText = "";
+            currTanachObj = source; 
 
             var data = 'p=' + Tanach.getBookFromNum(source.book) + ' ' + source.chapter + ':' + source.verse;
 
@@ -52,14 +54,18 @@ function onTextHighlight() {
 }
 
 function printText() {
-    if (newSource && sourceText && englishText && hebrewText) {        
-        document.getElementById("verse_source").textContent = sourceText; 
-        document.getElementById("verse_eng").textContent = englishText; 
-        document.getElementById("verse_heb").textContent = hebrewText; 
+    if (newSource && sourceText && englishText && hebrewText) {     
+        $("#verse_source").text(sourceText).fadeIn(500); 
+        $("#verse_eng").text(englishText).fadeIn(500); 
+        $("#verse_heb").text(hebrewText).fadeIn(500); 
         newSource = false;
     }
 }
 
+function _openInContext() 
+{
+    openInContext(currTanachObj); 
+}
 
 document.onmouseup = onTextHighlight;
 document.onkeyup = onTextHighlight;
