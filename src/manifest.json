@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Mekor Torah Sources",
+  "description": "Helping you find the right pasuk.",
+  "version": "0.01",
+  "background": {
+    "page": "background_page.html"
+    },
+    "web_accessible_resources": [
+    "css/*",
+    "page_popup.html"
+    ],
+    "content_scripts": [
+    {
+      "matches": [
+      "<all_urls>"
+      ],
+      "js": [
+      "production.js"
+      ]
+    }
+    ],
+    "icons": {
+      
+      },
+      "browser_action": {
+        "default_title": "Mekor Torah Sources",
+        "default_popup": "options_page.html"
+        },
+        "permissions": [
+        "storage",
+        "nativeMessaging",
+        "tabs"
+        ]
+      }

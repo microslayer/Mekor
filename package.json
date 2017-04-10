@@ -1,0 +1,9 @@
+{
+  "name": "mekor-torah-sources",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.3.0"
+  }
+}
