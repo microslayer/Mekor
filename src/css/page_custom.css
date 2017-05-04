@@ -39,7 +39,7 @@ input[type="checkbox"] {
 	display: inline;
 }
 
-#wrapper {
+#optPageContainer #wrapper {
 	position:fixed;	
 	padding-right:150px;
 	text-align: left;

@@ -38,6 +38,6 @@ function runTests() {
 
 (function() {
 
-	runTests();
+	//runTests();
 
 })();

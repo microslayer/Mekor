@@ -1,35 +1,38 @@
-{
-  "manifest_version": 2,
-  "name": "Mekor Torah Sources",
-  "description": "Helping you find the right pasuk.",
-  "version": "0.01",
-  "background": {
-    "page": "background_page.html"
-    },
-    "web_accessible_resources": [
-    "css/*",
-    "page_popup.html"
-    ],
-    "content_scripts": [
-    {
-      "matches": [
-      "<all_urls>"
-      ],
-      "js": [
-      "production.js"
-      ]
-    }
-    ],
-    "icons": {
-      
-      },
-      "browser_action": {
-        "default_title": "Mekor Torah Sources",
-        "default_popup": "options_page.html"
-        },
-        "permissions": [
-        "storage",
-        "nativeMessaging",
-        "tabs"
-        ]
+{  
+   "manifest_version": 2,
+   "version_name": "0.1.1 beta", 
+   "name":"Mekor Torah Sources",
+   "description":"Helping you find the right pasuk.",
+   "version":"0.01",
+   "background":{  
+      "page":"background_page.html"
+   },
+   "web_accessible_resources":[  
+      "css/*"
+   ],
+   "content_scripts":[  
+      {  
+         "matches":[  
+            "<all_urls>"
+         ],
+         "css": [
+            "css/page_popup.css"
+         ],
+         "js":[ 
+            "production.js"
+         ]
       }
+   ],
+   "icons":{  
+
+   },
+   "browser_action":{  
+      "default_title":"Mekor Torah Sources",
+      "default_popup": "popup_ext.html"
+   },
+   "permissions":[  
+      "storage",
+      "nativeMessaging",
+      "tabs"
+   ]
+}

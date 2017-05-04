@@ -1,23 +1,23 @@
-(function() {
-	// var popup = document.createElement("div");
-	// popup.setAttribute("id", "mekorTorah");
-	// var path = chrome.runtime.getURL('/page_popup.html')
-	// popup.innerHTML = loadPage(path);
+var popup; 
 
-	// // popup.style.display = "none"; 
-	// popup.style.height = "200px"; 
-	// popup.style.width = "200px"; 
+$(document).ready(function() { 
+	document.onmouseup = onTextHighlight;
+	document.onkeyup = onTextHighlight;
 
-	// document.body.appendChild(popup); 
-	// console.log("Popup loaded"); 
-})();
+	popup = document.createElement("div"); 
+	popup.id = 'mekor_extension_popup'; 
+	popup.innerHTML = '<div id="mekor_ext_popup"><div><h3 id="verse_source"></h3><span id="close"' + 
+	' onclick="this.parentNode.parentNode.parentNode.style.display=\'none\';"></span></div>' + 
+	'<div id="verse_heb" class="verse txt_rtl"></div>' + 
+	'<div id="verse_eng" class="verse"></div>' + 
+	'<div id="MTSfooter">' + 
+	'<span id="f_options" class="hover-underline">OPTIONS</span>' + 
+	'<span id="f_context" class="hover-underline"><a href="" target="_blank">' + 
+	'SEE IN CONTEXT &rsaquo;&rsaquo;</a></span>' + 
+	'</div>' + 
+	'</div>'; 
 
-function loadPage(href) {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", href, true);
-	xmlhttp.send();
-	return xmlhttp.responseText;
-}
+	popup.style.display = "none"; 
 
-document.onmouseup = onTextHighlight;
-document.onkeyup = onTextHighlight;
+	document.body.appendChild(popup);
+}); 

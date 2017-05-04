@@ -40,11 +40,11 @@ var chabadStartPages = {
    "Ecclesiastes" : 38
 }
 
-function openInContext(tanachObj)
+function getContextLink(tanachObj)
 {
 	var chabadString = "https://www.chabad.org/library/bible_cdo/aid/"; 
 	var page = chabadStartPages[Tanach.getBookFromNum(tanachObj.book)] + (tanachObj.chapter - 1); 
 	var site = chabadString + page + "#" + tanachObj.verse; 
 
-	window.open(site); 
+   return site; 
 }

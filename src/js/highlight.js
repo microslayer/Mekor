@@ -11,7 +11,7 @@ function getSelectedText() {
 var currTanachObj; 
 var sourceText, englishText, hebrewText, newSource;
 
-function onTextHighlight() {
+function onTextHighlight(evt) {
     var selectedText = getSelectedText();
 
     if (selectedText) {
@@ -28,13 +28,13 @@ function onTextHighlight() {
 
             // hebrew
             $.ajax({
-                url: 'http://getbible.net/json',
+                url: 'https://getbible.net/json',
                 dataType: 'text',
                 data: data + "&v=" + "bhs",
                 success: function(json) {                    
                     json = JSON.parse(json.substr(1, json.length-3)); 
                     hebrewText = json.book[0].chapter[source.verse].verse;
-                    printText();
+                    printText(evt);
                 }, 
                 error: function(err) {
                     console.error(JSON.stringify(err, null, 2)); 
@@ -43,13 +43,13 @@ function onTextHighlight() {
 
             // english 
             $.ajax({
-                url: 'http://getbible.net/json',
+                url: 'https://getbible.net/json',
                 dataType: 'text',
                 data: data,
                 success: function(json) {
                     json = JSON.parse(json.substr(1, json.length-3)); 
                     englishText = json.book[0].chapter[source.verse].verse;
-                    printText();
+                    printText(evt);
                 }, 
                 error: function(err) {
                     console.error(err); 
@@ -59,26 +59,19 @@ function onTextHighlight() {
     }
 }
 
-function printText() {
-    if (newSource && sourceText && englishText && hebrewText) {    
-        console.log(englishText, hebrewText); 
-
-        $("#verse_source").text(sourceText).fadeIn(500); 
-        $("#verse_eng").text(englishText).fadeIn(500); 
-        $("#verse_heb").text(hebrewText).fadeIn(500); 
+function printText(evt) {
+    if (newSource && sourceText && englishText && hebrewText) {  
+        $("#verse_source").text(sourceText); 
+        $("#verse_eng").text(englishText); 
+        $("#verse_heb").text(hebrewText); 
         newSource = false;
+
+        // console.log(evt); 
+
+        s = window.getSelection().getRangeAt(0).getBoundingClientRect(); 
+        // console.log(evt, s); 
+        
+        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(300);          
+        $(popup).find('#f_context a').attr('href', getContextLink(currTanachObj)); 
     }
-
-        // var r=window.getSelection().getRangeAt(0).getBoundingClientRect();
-        // var relative=document.body.parentNode.getBoundingClientRect();
-    // ele.style.top =(r.bottom -relative.top)+'px';//this will place ele below the selection
-    // ele.style.right=-(r.right-relative.right)+'px';//this will align the right edges together
 }
-
-function _openInContext() 
-{
-    openInContext(currTanachObj); 
-}
-
-document.onmouseup = onTextHighlight;
-document.onkeyup = onTextHighlight;

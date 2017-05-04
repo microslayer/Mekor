@@ -1,58 +1,88 @@
-#header {
-	font-family: 'Assistant', sans-serif;
-	font-size:15px;
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
 
-	width:280px;	
-
-	outline: 1px dotted black;
-	border: white solid 10px;
-	background-color: white;
-	color:#990000;
-
-	padding:15px;
-	position:fixed;
-	right:10;
-	top:10;
+#mekor_extension_popup {
+	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif!important;
+	font-size: 12px!important;
+	line-height: 1.42857143!important;
+	color: #555555!important;
+	position: absolute!important;
+	z-index:1000!important;
+	width: 230px!important;
+	padding: 10px!important;
+	background-color: white!important;
+	border: 1px solid black!important;
 }
 
-.txt_rtl {
-	direction: rtl; 
+#mekor_ext_popup #header {
+	font-size:12px!important;
+	display:inline!important;
+
+	width:280px!important;
+	outline: 1px dotted black!important;
+	border: white solid 10px!important;
+	background-color: white!important;
+
+	padding:15px!important;
+	right:10!important;
+	top:10!important;
 }
 
-#verse_source {
-	font-weight: normal; 
-	margin-top:0px;
-	margin-bottom:20px;
-	font-size:18px;
-	text-transform: uppercase;
+#mekor_ext_popup #close {
+	width: 11px!important;
+	height: 10px!important;
+	position: absolute!important;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAAGFBMVEUAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVXMIJ7GAAAAB3RSTlMAARhfYr7xpmmkuAAAADFJREFUCFtjYEpmYE5iECt3cC9jYC4vLS9mYHAvL3dgYGAtL2WAsiHiEDUQ9QwCQAQAjgAMViCQkocAAAAASUVORK5CYII=)!important;
+	top: 15px!important;
+	right: 13px!important;
 }
 
-.verse {
-	background-color:#fffcfc;
-	font-size:15px;
-	padding:10px;
+#mekor_ext_popup .txt_rtl {
+	direction: rtl!important;
 }
 
-.verse + .verse {
-	padding-top:15px;
+#mekor_ext_popup #verse_source {
+	font-weight: normal!important;
+	margin-top:0px!important;
+	margin-bottom:3px!important;
+	text-transform: uppercase!important;
 }
 
-.hover-underline:hover {
-	text-decoration: underline;
+#mekor_ext_popup .verse {
+	background-color:#fffcfc!important;
+	padding:10px!important;
 }
 
-#footer {
-	margin: 15px 0px 0px 0px; 
-	background-color:green;
-	font-size:14px;
+#mekor_ext_popup .footer #f_options {
+	float: left!important;
 }
 
-#f_options {
-	float:left;
-	cursor:pointer;
+#mekor_ext_popup .footer #f_context {
+	float: right!important;
 }
 
-#f_context {	
-	cursor:pointer;
-	float:right;
+#mekor_ext_popup .verse + .verse {
+	/*padding-top:15px;*/
+}
+
+#mekor_ext_popup .hover-underline:hover {
+	text-decoration: underline!important;
+}
+
+#mekor_ext_popup #MTSfooter {
+	margin: 4px!important; 
+}
+
+#mekor_ext_popup #f_options {
+	float:left!important;
+	cursor:pointer!important;
+}
+
+#mekor_ext_popup #f_context {	
+	cursor:pointer!important;
+	float:right!important;
+}
+
+#mekor_ext_popup #f_context a {
+	text-decoration: none!important;
+	color: #555555!important;
 }

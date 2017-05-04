@@ -17,10 +17,8 @@ module.exports = function(grunt) {
         // } 
     });
 
-    // tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-concat');
     // grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    // tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['concat']); // , 'uglify'
 };
