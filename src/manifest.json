@@ -1,8 +1,8 @@
 {  
-   "version": "0.0.3", 
+   "version": "0.0.5", 
    "manifest_version": 2,
    "name":"Mekor Torah Sources",
-   "description":"Helping you find the right pasuk.",
+   "description":"Get a verse from its citation.",
    "background":{  
       "page":"background_page.html"
    },

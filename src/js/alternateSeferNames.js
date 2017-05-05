@@ -104,8 +104,8 @@ var seferNames = {
 	"Daniel": ["dan","דניאל", "daniel"],
 	"Ezra": ["ezr" ,"עזרה", "ezra"],
 	"Nehemiah": ["neh", "נחמיה", "nec?hemiah?"],
-	"Chronicles1": ["chron","דברי הימים", "divr(e|a)i hayamim", "hayamim", "chronicles"],
-	// "Chronicles2" : [ "chronicles" ], // todo fix   
+	"I_Chronicles": ["chron","דברי הימים", "divr(e|a)i hayamim", "hayamim", "chronicles"],
+	// "I_Chronicles" : [ "chronicles" ], // todo fix   
 
 	"SongOfSongs": ["שיר השירים", "song of songs", "shir hashirim"],
 	"Esther": ["אסתר", "esther"],
