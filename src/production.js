@@ -129,7 +129,7 @@ TanachSource.prototype = {
 var seferNames = {
 	"Genesis": [
 	"gen", "gn", 
-	"בראשית", "b(e|i)r(e|a)ishi(s|t)", "genesis",
+	"בראשית", "b(e|i)r(e|a)i?she?i(s|t)", "genesis",
 	"נח", "noach",
 	"לך לך", "lech lecha",
 	"וירא", "vay(a|e)ira",
@@ -144,7 +144,7 @@ var seferNames = {
 	],
 	"Exodus": [
 	"ex", "exod", 
-	"שמות", "shemo(t|s)", "exodus",
+	"שמות", "she?mo(t|s)", "exodus",
 	"וארא", "vaera", "vayeira",
 	"בא", "bo",
 	"בשלח", "b(e|i)shalach", 
@@ -183,7 +183,7 @@ var seferNames = {
 	"מסעי", "maa?s(a|e)i"
 	],
 	"Deuteronomy": [
-	"duet", "dt", 
+	"deut", "dt", 
 	"דברים", "deuteronomy", "de?varim",
 	"ואתחנן", "vae(s|t)chanan",
 	"עקב", "(a|e)ikev",
@@ -194,11 +194,11 @@ var seferNames = {
 	"ני?צבים", "ni(t|s)avim",
 	"וילך", "vay(a|e)ilech",
 	"האזינו", "haazinu",
-	"וזאת הברבה", "ve?zo(t|s) habe?racha", "zo(t|s) habe?racha"
+	"וזאת הברבה", "ve?-?zo(t|s) habe?racha", "zo(t|s) habe?racha"
 	],
 
-	"Joshua": ["josh", "jo", "יהושו?ע", "joshua", "yehoshuah?"],
-	"Judges": ["judg", "jgs", "שופטים", "judges", "shoftim"], // todo fix 
+	"Joshua": ["josh", "יהושו?ע", "joshua", "yehoshuah?"],
+	"Judges": ["judg", "jgs", "שופטים", "judges", "sho(f|ph)e?tim"], // todo fix 
 	"Samuel1": [ "sam", "sm", "שמואל", "samuel", "shmuel"],
 	// "Shmuel2"  : [ ], // todo fix 
 	"Kings1": [ "kgs", "מלכים", "kings", "mel(a|o)chim"],
@@ -221,14 +221,14 @@ var seferNames = {
 	"Malachi": ["mal", "מלאכי", "malachi"],
 	"Zechariah": ["zech", "זבריה", "z(e|a)chariah?"],
 
-	"Psalms": ["ps", "תהילים", "t(e|i)hill?im", "psalms"],
+	"Psalms": ["ps", "psalm", "תהילים", "t(e|i)hill?im", "psalms"],
 	"Proverbs": ["prov", "משלי", "mishl(e|a)i", "proverbs"],
 	"Job": ["איוב", "job", "iyov"],
 	"Daniel": ["dan","דניאל", "daniel"],
 	"Ezra": ["ezr" ,"עזרה", "ezra"],
 	"Nehemiah": ["neh", "נחמיה", "nec?hemiah?"],
-	"Chronicles1": ["chron","דברי הימים", "divr(e|a)i hayamim", "chronicles"],
-	// "Chronicles2" : [ ], // todo fix   
+	"Chronicles1": ["chron","דברי הימים", "divr(e|a)i hayamim", "hayamim", "chronicles"],
+	// "Chronicles2" : [ "chronicles" ], // todo fix   
 
 	"SongOfSongs": ["שיר השירים", "song of songs", "shir hashirim"],
 	"Esther": ["אסתר", "esther"],
@@ -274,40 +274,25 @@ function onTextHighlight(evt) {
 
         if (source) {
             newSource = true;
-            sourceText = "", englishText = "", hebrewText = "";
+            sourceText = "";
             currTanachObj = source; 
 
-            var data = 'p=' + Tanach.getBookFromNum(source.book) + ' ' + source.chapter + ':' + source.verse;
+            var data = Tanach.getBookFromNum(source.book) + ':' + source.chapter + ':' + source.verse;
 
             sourceText = source.toString();
 
             // hebrew
             $.ajax({
-                url: 'https://getbible.net/json',
+                url: 'https://www.sefaria.org/api/texts/' + data + '?commentary=0&context=0&pad=0',
                 dataType: 'text',
-                data: data + "&v=" + "bhs",
                 success: function(json) {                    
-                    json = JSON.parse(json.substr(1, json.length-3)); 
-                    hebrewText = json.book[0].chapter[source.verse].verse;
+                    json = JSON.parse(json); 
+                    englishText = json.text;
+                    hebrewText = json.he; 
                     printText(evt);
                 }, 
                 error: function(err) {
                     console.error(JSON.stringify(err, null, 2)); 
-                }
-            });
-
-            // english 
-            $.ajax({
-                url: 'https://getbible.net/json',
-                dataType: 'text',
-                data: data,
-                success: function(json) {
-                    json = JSON.parse(json.substr(1, json.length-3)); 
-                    englishText = json.book[0].chapter[source.verse].verse;
-                    printText(evt);
-                }, 
-                error: function(err) {
-                    console.error(err); 
                 }
             });
         }
@@ -315,18 +300,16 @@ function onTextHighlight(evt) {
 }
 
 function printText(evt) {
-    if (newSource && sourceText && englishText && hebrewText) {  
+    if (newSource && sourceText) {  
         $("#verse_source").text(sourceText); 
         $("#verse_eng").text(englishText); 
         $("#verse_heb").text(hebrewText); 
         newSource = false;
 
-        // console.log(evt); 
-
         s = window.getSelection().getRangeAt(0).getBoundingClientRect(); 
-        // console.log(evt, s); 
         
-        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(300);          
+        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(300); 
+        $(popup).find('#close').attr('display', 'flex'); 
         $(popup).find('#f_context a').attr('href', getContextLink(currTanachObj)); 
     }
 }
@@ -409,7 +392,7 @@ function getContextLink(tanachObj)
    return site; 
 }
 function testForSource(text) {
-    var arr = text.toLowerCase().split(/[: ,;"'.()-]/).filter(Boolean);
+    var arr = text.toLowerCase().split(/[: ,;"'.()–-]/).filter(Boolean);
 
     if (!allSeferNamesRegex.test(text))
     {

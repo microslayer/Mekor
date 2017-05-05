@@ -19,40 +19,25 @@ function onTextHighlight(evt) {
 
         if (source) {
             newSource = true;
-            sourceText = "", englishText = "", hebrewText = "";
+            sourceText = "";
             currTanachObj = source; 
 
-            var data = 'p=' + Tanach.getBookFromNum(source.book) + ' ' + source.chapter + ':' + source.verse;
+            var data = Tanach.getBookFromNum(source.book) + ':' + source.chapter + ':' + source.verse;
 
             sourceText = source.toString();
 
             // hebrew
             $.ajax({
-                url: 'https://getbible.net/json',
+                url: 'https://www.sefaria.org/api/texts/' + data + '?commentary=0&context=0&pad=0',
                 dataType: 'text',
-                data: data + "&v=" + "bhs",
                 success: function(json) {                    
-                    json = JSON.parse(json.substr(1, json.length-3)); 
-                    hebrewText = json.book[0].chapter[source.verse].verse;
+                    json = JSON.parse(json); 
+                    englishText = json.text;
+                    hebrewText = json.he; 
                     printText(evt);
                 }, 
                 error: function(err) {
                     console.error(JSON.stringify(err, null, 2)); 
-                }
-            });
-
-            // english 
-            $.ajax({
-                url: 'https://getbible.net/json',
-                dataType: 'text',
-                data: data,
-                success: function(json) {
-                    json = JSON.parse(json.substr(1, json.length-3)); 
-                    englishText = json.book[0].chapter[source.verse].verse;
-                    printText(evt);
-                }, 
-                error: function(err) {
-                    console.error(err); 
                 }
             });
         }
@@ -60,18 +45,16 @@ function onTextHighlight(evt) {
 }
 
 function printText(evt) {
-    if (newSource && sourceText && englishText && hebrewText) {  
+    if (newSource && sourceText) {  
         $("#verse_source").text(sourceText); 
         $("#verse_eng").text(englishText); 
         $("#verse_heb").text(hebrewText); 
         newSource = false;
 
-        // console.log(evt); 
-
         s = window.getSelection().getRangeAt(0).getBoundingClientRect(); 
-        // console.log(evt, s); 
         
-        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(300);          
+        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(300); 
+        $(popup).find('#close').attr('display', 'flex'); 
         $(popup).find('#f_context a').attr('href', getContextLink(currTanachObj)); 
     }
 }
