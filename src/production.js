@@ -12,10 +12,10 @@ var TanachKeyName = {
    "Deuteronomy"  : 5, 
    "Joshua"       : 6, 
    "Judges"       : 7, 
-   "Samuel1"      : 8, 
-   "Shmuel2"      : 9, 
-   "Kings1"       : 10, 
-   "Kings2"       : 11, 
+   "I_Samuel"      : 8, 
+   "ShmuelII"      : 9, 
+   "I_Kings"       : 10, 
+   "II_Kings"       : 11, 
    "Isaiah"       : 12, 
    "Jeremiah"     : 13, 
    "Ezekiel"      : 14, 
@@ -198,11 +198,11 @@ var seferNames = {
 	],
 
 	"Joshua": ["josh", "יהושו?ע", "joshua", "yehoshuah?"],
-	"Judges": ["judg", "jgs", "שופטים", "judges", "sho(f|ph)e?tim"], // todo fix 
-	"Samuel1": [ "sam", "sm", "שמואל", "samuel", "shmuel"],
-	// "Shmuel2"  : [ ], // todo fix 
-	"Kings1": [ "kgs", "מלכים", "kings", "mel(a|o)chim"],
-	// "Kings2"   : [ ], // todo fix 
+	"Judges": ["judg", "jud", "jgs", "שופטים", "judges", "sho(f|ph)e?tim"], // todo fix 
+	"I_Samuel": [ "sam", "sm", "שמואל", "samuel", "shmuel"],
+	// "II_Samuel"  : [ ], // todo fix 
+	"I_Kings": [ "kgs", "מלכים", "kings", "mel(a|o)chim"],
+	// "II_Kings"   : [ ], // todo fix 
 
 	"Isaiah": [ "isa", "ישעיהו", "isaiah", "y(i|e)shayahu", "yeshayah?"],
 	"Jeremiah": ["jer", "ירמיהו", "jeremiah?", "yirmiyahu"],
@@ -211,7 +211,7 @@ var seferNames = {
 	"Hosea": ["hos", "הוש?יע", "hosea", "hosheah?"], // fix 
 	"Joel": ["יואל", "(j|y)oel"],
 	"Amos": ["אמוס", "amos"],
-	"Obadiah": ["ob", "obad", "עובדיה", "o(b|v)adiah?"],
+	"Obadiah": ["ob$", "obad", "עובדיה", "o(b|v)adiah?"],
 	"Jonah": [ "jon", "יונה", "(j|y)onah?"],
 	"Micah": ["mic", "מיכה", "mich?ah?"], /// fix 
 	"Nahum": ["nah", "נחום", "nac?hum"],
@@ -268,6 +268,7 @@ var sourceText, englishText, hebrewText, newSource;
 
 function onTextHighlight(evt) {
     var selectedText = getSelectedText();
+    newSource = false; 
 
     if (selectedText) {
         var source = testForSource(selectedText);
@@ -277,7 +278,7 @@ function onTextHighlight(evt) {
             sourceText = "";
             currTanachObj = source; 
 
-            var data = Tanach.getBookFromNum(source.book) + ':' + source.chapter + ':' + source.verse;
+            var data = Tanach.getBookFromNum(source.book) + '.' + source.chapter + '.' + source.verse;
 
             sourceText = source.toString();
 
@@ -285,10 +286,14 @@ function onTextHighlight(evt) {
             $.ajax({
                 url: 'https://www.sefaria.org/api/texts/' + data + '?commentary=0&context=0&pad=0',
                 dataType: 'text',
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
                 success: function(json) {                    
                     json = JSON.parse(json); 
-                    englishText = json.text;
-                    hebrewText = json.he; 
+                    englishText = json.text ? json.text : 'Error';
+                    hebrewText = json.he ? json.he : 'Error'; 
                     printText(evt);
                 }, 
                 error: function(err) {
@@ -302,8 +307,8 @@ function onTextHighlight(evt) {
 function printText(evt) {
     if (newSource && sourceText) {  
         $("#verse_source").text(sourceText); 
-        $("#verse_eng").text(englishText); 
-        $("#verse_heb").text(hebrewText); 
+        $("#verse_eng").html(englishText); 
+        $("#verse_heb").html(hebrewText); 
         newSource = false;
 
         s = window.getSelection().getRangeAt(0).getBoundingClientRect(); 
@@ -344,10 +349,10 @@ var chabadStartPages = {
    "Deuteronomy"  : 9965, 
    "Joshua"       : 15785, 
    "Judges"       : 15809, 
-   "Samuel1"      : 15830, 
-   "Shmuel2"      : 15861, 
-   "Kings1"       : 15885, 
-   "Kings2"       : 11, 
+   "I_Samuel"      : 15830, 
+   "ShmuelII"      : 15861, 
+   "I_Kings"       : 15885, 
+   "II_Kings"       : 11, 
    "Isaiah"       : 12, 
    "Jeremiah"     : 13, 
    "Ezekiel"      : 14, 
@@ -387,7 +392,7 @@ function getContextLink(tanachObj)
    return site; 
 }
 function testForSource(text) {
-    var arr = text.toLowerCase().split(/[: ,;"'.()–-]/).filter(Boolean);
+    var arr = text.toLowerCase().split(/[:\[\] ,;"'.()–-]/).filter(Boolean);
 
     if (!allSeferNamesRegex.test(text))
     {

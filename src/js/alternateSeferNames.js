@@ -75,11 +75,11 @@ var seferNames = {
 	],
 
 	"Joshua": ["josh", "יהושו?ע", "joshua", "yehoshuah?"],
-	"Judges": ["judg", "jgs", "שופטים", "judges", "sho(f|ph)e?tim"], // todo fix 
-	"Samuel1": [ "sam", "sm", "שמואל", "samuel", "shmuel"],
-	// "Shmuel2"  : [ ], // todo fix 
-	"Kings1": [ "kgs", "מלכים", "kings", "mel(a|o)chim"],
-	// "Kings2"   : [ ], // todo fix 
+	"Judges": ["judg", "jud", "jgs", "שופטים", "judges", "sho(f|ph)e?tim"], // todo fix 
+	"I_Samuel": [ "sam", "sm", "שמואל", "samuel", "shmuel"],
+	// "II_Samuel"  : [ ], // todo fix 
+	"I_Kings": [ "kgs", "מלכים", "kings", "mel(a|o)chim"],
+	// "II_Kings"   : [ ], // todo fix 
 
 	"Isaiah": [ "isa", "ישעיהו", "isaiah", "y(i|e)shayahu", "yeshayah?"],
 	"Jeremiah": ["jer", "ירמיהו", "jeremiah?", "yirmiyahu"],
@@ -88,7 +88,7 @@ var seferNames = {
 	"Hosea": ["hos", "הוש?יע", "hosea", "hosheah?"], // fix 
 	"Joel": ["יואל", "(j|y)oel"],
 	"Amos": ["אמוס", "amos"],
-	"Obadiah": ["ob", "obad", "עובדיה", "o(b|v)adiah?"],
+	"Obadiah": ["ob$", "obad", "עובדיה", "o(b|v)adiah?"],
 	"Jonah": [ "jon", "יונה", "(j|y)onah?"],
 	"Micah": ["mic", "מיכה", "mich?ah?"], /// fix 
 	"Nahum": ["nah", "נחום", "nac?hum"],

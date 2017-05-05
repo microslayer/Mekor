@@ -1,5 +1,5 @@
 function testForSource(text) {
-    var arr = text.toLowerCase().split(/[: ,;"'.()–-]/).filter(Boolean);
+    var arr = text.toLowerCase().split(/[:\[\] ,;"'.()–-]/).filter(Boolean);
 
     if (!allSeferNamesRegex.test(text))
     {

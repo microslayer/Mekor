@@ -13,6 +13,7 @@ var sourceText, englishText, hebrewText, newSource;
 
 function onTextHighlight(evt) {
     var selectedText = getSelectedText();
+    newSource = false; 
 
     if (selectedText) {
         var source = testForSource(selectedText);
@@ -22,7 +23,7 @@ function onTextHighlight(evt) {
             sourceText = "";
             currTanachObj = source; 
 
-            var data = Tanach.getBookFromNum(source.book) + ':' + source.chapter + ':' + source.verse;
+            var data = Tanach.getBookFromNum(source.book) + '.' + source.chapter + '.' + source.verse;
 
             sourceText = source.toString();
 
@@ -30,10 +31,14 @@ function onTextHighlight(evt) {
             $.ajax({
                 url: 'https://www.sefaria.org/api/texts/' + data + '?commentary=0&context=0&pad=0',
                 dataType: 'text',
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
                 success: function(json) {                    
                     json = JSON.parse(json); 
-                    englishText = json.text;
-                    hebrewText = json.he; 
+                    englishText = json.text ? json.text : 'Error';
+                    hebrewText = json.he ? json.he : 'Error'; 
                     printText(evt);
                 }, 
                 error: function(err) {
@@ -47,8 +52,8 @@ function onTextHighlight(evt) {
 function printText(evt) {
     if (newSource && sourceText) {  
         $("#verse_source").text(sourceText); 
-        $("#verse_eng").text(englishText); 
-        $("#verse_heb").text(hebrewText); 
+        $("#verse_eng").html(englishText); 
+        $("#verse_heb").html(hebrewText); 
         newSource = false;
 
         s = window.getSelection().getRangeAt(0).getBoundingClientRect(); 
