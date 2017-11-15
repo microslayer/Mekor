@@ -107,7 +107,7 @@ var seferNames = {
 	"I_Chronicles": ["chron","דברי הימים", "divr(e|a)i hayamim", "hayamim", "chronicles"],
 	// "I_Chronicles" : [ "chronicles" ], // todo fix   
 
-	"SongOfSongs": ["שיר השירים", "song of songs", "shir hashirim"],
+	"SongOfSongs": ["שיר השירים", "songs", "hashirim"],
 	"Esther": ["אסתר", "esther"],
 	"Ruth": ["רות", "ruth?", "rus"],
 	"Lamentations": ["lam","איכה", "lamentations", "(a|e)icha"],

@@ -19,6 +19,7 @@ function onTextHighlight(evt) {
         var source = testForSource(selectedText);
 
         if (source) {
+
             newSource = true;
             sourceText = "";
             currTanachObj = source; 
@@ -45,6 +46,11 @@ function onTextHighlight(evt) {
                     console.error(JSON.stringify(err, null, 2)); 
                 }
             });
+        } 
+        else /* not a source */ {
+            // fade out if highlight was not on the popup 
+            if ($(evt.target).parents("#mekor_ext_popup").length == 0) 
+                popup.style.display = "none"; 
         }
     }
 }

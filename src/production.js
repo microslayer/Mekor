@@ -230,7 +230,7 @@ var seferNames = {
 	"I_Chronicles": ["chron","דברי הימים", "divr(e|a)i hayamim", "hayamim", "chronicles"],
 	// "I_Chronicles" : [ "chronicles" ], // todo fix   
 
-	"SongOfSongs": ["שיר השירים", "song of songs", "shir hashirim"],
+	"SongOfSongs": ["שיר השירים", "songs", "hashirim"],
 	"Esther": ["אסתר", "esther"],
 	"Ruth": ["רות", "ruth?", "rus"],
 	"Lamentations": ["lam","איכה", "lamentations", "(a|e)icha"],
@@ -274,6 +274,7 @@ function onTextHighlight(evt) {
         var source = testForSource(selectedText);
 
         if (source) {
+
             newSource = true;
             sourceText = "";
             currTanachObj = source; 
@@ -300,6 +301,11 @@ function onTextHighlight(evt) {
                     console.error(JSON.stringify(err, null, 2)); 
                 }
             });
+        } 
+        else /* not a source */ {
+            // fade out if highlight was not on the popup 
+            if ($(evt.target).parents("#mekor_ext_popup").length == 0) 
+                popup.style.display = "none"; 
         }
     }
 }
@@ -375,7 +381,7 @@ var chabadStartPages = {
    "Ezra"         : 16498, 
    "Nehemiah"     : 16508, 
    "I_Chronicles"  : 16521, 
-   "II_Chronicles"  : 16550, 
+   "II_Chronicles" : 16550, 
    "SongOfSongs"  : 16445, 
    "Esther"       : 16474, 
    "Ruth"         : 16453, 

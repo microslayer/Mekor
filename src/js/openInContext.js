@@ -32,7 +32,7 @@ var chabadStartPages = {
    "Ezra"         : 16498, 
    "Nehemiah"     : 16508, 
    "I_Chronicles"  : 16521, 
-   "II_Chronicles"  : 16550, 
+   "II_Chronicles" : 16550, 
    "SongOfSongs"  : 16445, 
    "Esther"       : 16474, 
    "Ruth"         : 16453, 
