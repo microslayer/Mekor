@@ -1,5 +1,5 @@
 {  
-   "version": "0.0.5", 
+   "version": "0.0.7", 
    "manifest_version": 2,
    "name":"Mekor Torah Sources",
    "description":"Get a verse from its citation.",

@@ -6,8 +6,9 @@ $(document).ready(function() {
 
 	popup = document.createElement("div"); 
 	popup.id = 'mekor_extension_popup'; 
+	popup.style.display = 'none'; 
 	popup.innerHTML = '<div id="mekor_ext_popup"><div><h3 id="verse_source"></h3><span id="close"' + 
-	' onclick="this.parentNode.parentNode.parentNode.style.display=\'none\';"></span></div>' + 
+	'></span></div>' + 
 	'<div id="verse_heb" class="verse txt_rtl"></div>' + 
 	'<div id="verse_eng" class="verse"></div>' + 
 	'<div id="MTSfooter">' + 
@@ -17,7 +18,11 @@ $(document).ready(function() {
 	'</div>' + 
 	'</div>'; 
 
-	popup.style.display = "none"; 
-
 	document.body.appendChild(popup);
+
+	$('#mekor_ext_popup #close').click(hidePopup)
 }); 
+
+function hidePopup() {
+	$("#mekor_extension_popup").hide();
+}

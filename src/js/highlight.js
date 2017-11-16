@@ -13,6 +13,7 @@ var sourceText, englishText, hebrewText, newSource;
 
 function onTextHighlight(evt) {
     var selectedText = getSelectedText();
+
     newSource = false; 
 
     if (selectedText) {
@@ -36,7 +37,7 @@ function onTextHighlight(evt) {
                 xhrFields: {
                     withCredentials: true
                 },
-                success: function(json) {                    
+                success: function(json) {        
                     json = JSON.parse(json); 
                     englishText = json.text ? json.text : 'Error';
                     hebrewText = json.he ? json.he : 'Error'; 
@@ -50,7 +51,7 @@ function onTextHighlight(evt) {
         else /* not a source */ {
             // fade out if highlight was not on the popup 
             if ($(evt.target).parents("#mekor_ext_popup").length == 0) 
-                popup.style.display = "none"; 
+                hidePopup()
         }
     }
 }
@@ -64,7 +65,7 @@ function printText(evt) {
 
         s = window.getSelection().getRangeAt(0).getBoundingClientRect(); 
         
-        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(300); 
+        $(popup).css({top: evt.pageY, left: evt.pageX, position:'absolute' }).fadeIn(100); 
         $(popup).find('#close').attr('display', 'flex'); 
         $(popup).find('#f_context a').attr('href', getContextLink(currTanachObj)); 
     }
