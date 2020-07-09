@@ -4,7 +4,9 @@ Mekor is a Chrome Extension that shows you in-page citations of verse references
 
 [View Mekor in the Chrome Web Store!](https://chrome.google.com/webstore/detail/mekor-torah-sources/dlbiecjfpomjlgdlgafingcdlimjhjcc)
 
-# Local Development 
+## Local Development 
+
+### Setup 
 
 To get Mekor running locally, follow these directions. 
 
@@ -24,3 +26,7 @@ $ cd TorahSources
 $ npm install
 $ grunt
 ```
+
+### Testing 
+
+Unit tests are contained in `src/js/tests.js`. To test the Chrome Extension, follow the directions [here](https://superuser.com/questions/247651/how-does-one-install-an-extension-for-chrome-browser-from-the-local-file-system). 
