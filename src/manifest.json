@@ -4,7 +4,9 @@
    "name":"Mekor Torah Sources",
    "description":"Get a verse from its citation.",
    "background":{  
-      "page":"background_page.html"
+      // "page":"background_page.html", 
+      "scripts": ["background.js", "production.js"],
+      "persistent": false
    },
    "web_accessible_resources":[  
       "css/*"
@@ -30,9 +32,10 @@
       "144": "img/icon144.png",
       "192": "img/icon192.png"
    },
+   "options_page": "options/options.html",
    "browser_action":{  
       "default_title":"Mekor Torah Sources",
-      "default_popup": "popup_ext.html"
+      "default_popup": "browser_extension_popup.html"
    },
    "permissions":[  
       "storage",

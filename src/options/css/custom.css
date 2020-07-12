@@ -1,0 +1,96 @@
+html {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */    
+
+}
+
+body {
+	text-align: center;
+	cursor: default;
+    color: white;
+	background-color: #212e50;
+}
+
+.container {
+	margin: auto; 
+	width: 750px !important;
+	max-width: 750px !important;
+}
+
+h1 { 
+	color:white !important;
+}
+
+h2 {
+	color: white !important;
+    text-transform: uppercase;
+}
+
+nav {
+	position:absolute;
+	text-align:left;
+	left:0;
+	top:0;
+}
+
+nav:hover {
+	text-decoration: none;
+}
+
+nav ul li {
+	list-style-type: none;
+}
+
+nav li a { 
+	display: block; 
+	width:60px;
+}
+
+input:checked+label{ 
+	font-weight: 600; 
+} 
+
+input[type="checkbox"] {
+	margin-right: 0px; 
+	padding-right: 0px; 
+}
+
+.display-inline {
+	display: inline;
+}
+
+#languagesContainer {
+	padding-right: 0px;
+	padding-left: 0px;
+	cursor: pointer;
+}
+
+#languagesContainer a.active {
+    background-color: #E91E63;
+}
+
+#optPageContainer #wrapper {
+	position:fixed;	
+	padding-right:150px;
+	text-align: left;
+	width: 600px;
+	margin: 0 auto;
+}
+
+.language-header-text {
+    font-size: 32px;
+    padding: 10px;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+    color: #ffffff;
+    text-shadow: -1px -1px 3px rgba(82, 80, 72, 0.8);
+}
+
+.language-native {
+    color: #99c5d2;
+    text-transform: capitalize;
+    position: absolute;
+    right: 0px;
+}
