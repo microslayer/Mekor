@@ -5,7 +5,7 @@ class ChromeStorage {
   }
 
   getSavedVersions(callback) {
-    this.getFromStorageAsync("languageVersions").then(storageObj => {
+    this.getFromStorageAsync(this.LANGUAGE_VERSION_KEY).then(storageObj => {
       this.setVersions(storageObj) 
       if (callback) {
         this.callback(this.VERSIONS)
@@ -14,7 +14,9 @@ class ChromeStorage {
   }
 
   setVersions(storageObj) {
-    this.VERSIONS = storageObj["languageVersions"][0]
+    if (this.VERSIONS.length == 0 && storageObj[this.LANGUAGE_VERSION_KEY]) {
+      this.VERSIONS = storageObj[this.LANGUAGE_VERSION_KEY][0]
+    }
   }
 
   printContentsOnLoop() {

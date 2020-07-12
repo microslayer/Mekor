@@ -12,7 +12,6 @@ function loadLanguagesAndVersions(chromeStorage) {
   chromeStorage.getFromStorageAsync("languageVersions")
     .then(obj => {
       const activeVersions = obj["languageVersions"][0]
-      console.log("activeVersions", activeVersions)
       const languagesHtml = getLanguagesHtml(versions, activeVersions)
       showLanguages(languagesHtml)
       initalizeLanguageActiveEventListener(chromeStorage)
@@ -42,7 +41,6 @@ function sortByLanguages(versionJson) {
 }
 
 function getLanguagesHtml(versionsJson, activeVersions) {
-  console.log("getLanguagesHtml()", activeVersions)
   const languageToVersionArrayMap = sortByLanguages(versionsJson)
   let stripHtmlRegex = /(<([^>]+)>)/ig
   let languagesHtml = ""
@@ -93,8 +91,6 @@ function initializeLanguageElementClick(chromeStorage, elem, containerClass) {
     const containerElm = findAncestor(elem, containerClass)
     const addLanguageVersion = containerElm.className.indexOf(ACTIVE_VERSION_CLASS) == -1; 
     const versionTitle = containerElm.querySelector('[data-version-title]').innerText
-
-    console.log("Passing " + versionTitle + " to storage...")
 
     if (addLanguageVersion) {
       chromeStorage.addVersionToStorage(versionTitle)
