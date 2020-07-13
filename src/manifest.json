@@ -9,7 +9,8 @@
       "persistent": false
    },
    "web_accessible_resources":[  
-      "css/*"
+      "global_css/*", 
+      "options/*"
    ],
    "content_scripts":[  
       {  
@@ -17,25 +18,25 @@
             "<all_urls>"
          ],
          "css": [
-            "css/page_popup.css"
+            "global_css/page_popup.css"
          ],
          "js":[ 
             "production.js"
          ]
       }
    ],
-   "icons":{  
-      "36": "img/icon36.png",
-      "48": "img/icon48.png",
-      "72": "img/icon72.png",
-      "96": "img/icon96.png",
-      "144": "img/icon144.png",
-      "192": "img/icon192.png"
+   "icons": {  
+      "36":  "icons/icon36.png",
+      "48":  "icons/icon48.png",
+      "72":  "icons/icon72.png",
+      "96":  "icons/icon96.png",
+      "144": "icons/icon144.png",
+      "192": "icons/icon192.png"
    },
    "options_page": "options/options.html",
    "browser_action":{  
-      "default_title":"Mekor Torah Sources",
-      "default_popup": "browser_extension_popup.html"
+      "default_title": "Mekor Torah Sources",
+      "default_popup": "browser_extension_popup/popup.html"
    },
    "permissions":[  
       "storage",

@@ -1,3 +1,52 @@
+.width-50-pc {
+	width: 50%; 
+	display: block;
+}
+
+.container {
+	width: 400px;
+	height: 280px;
+}
+
+#headingIcon {
+    text-align: left;
+    margin-top: 30px;
+    position: absolute;
+    top: -7px;
+    left: 42px;
+}
+
+#buttons {
+    position: absolute;
+    top: 127px;
+    width: 190%;
+}
+
+.heading-icon {
+	display: inline;
+	width: 50%;
+}
+
+.heading-text {
+    position: absolute;
+    right: 58px;
+    top: 25px;
+    text-align: left;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    right: 130px;
+}
+
+/* used by both  */ 
+.display-inline {
+	display: inline;
+}
+
+/* Used by options/ or possibly both */
 html {
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
@@ -13,11 +62,6 @@ body {
 	background-color: #212e50;
 }
 
-.container {
-	margin: auto; 
-	width: 750px !important;
-	max-width: 750px !important;
-}
 
 h1 { 
 	color:white !important;
@@ -62,14 +106,11 @@ input[type="checkbox"] {
     padding-bottom: 30px;
 }
 
-.display-inline {
-	display: inline;
-}
 
 #languagesContainer {
 	padding-right: 0px;
 	padding-left: 0px;
-	cursor: default;
+	cursor: pointer;
 }
 
 #languagesContainer a.active {
@@ -82,10 +123,6 @@ input[type="checkbox"] {
 	text-align: left;
 	width: 600px;
 	margin: 0 auto;
-}
-
-.language-version {
-	cursor: pointer; 
 }
 
 .language-header-text {

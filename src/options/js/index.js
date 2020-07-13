@@ -11,7 +11,7 @@ function loadLanguagesAndVersions(chromeStorage) {
   const versions = fetchVersions(VERSIONS_URL)
   chromeStorage.getFromStorageAsync("languageVersions")
     .then(obj => {
-      const activeVersions = obj["languageVersions"][0]
+      const activeVersions = obj["languageVersions"] ? obj["languageVersions"][0] : {}
       const languagesHtml = getLanguagesHtml(versions, activeVersions)
       showLanguages(languagesHtml)
       initalizeLanguageActiveEventListener(chromeStorage)
@@ -55,7 +55,9 @@ function getLanguagesHtml(versionsJson, activeVersions) {
                       </h2>`
     languagesHtml += `<div class="list-group">`
     versions.forEach(version => {
-      const activeClass = activeVersions.includes(version.title) ? ACTIVE_VERSION_CLASS : "" 
+
+      const activeClass = !isEmptyObject(activeVersions) && activeVersions.includes(version.title) ? 
+                                                                  ACTIVE_VERSION_CLASS : "" 
       // TODO: escape all output in case of html 
       languagesHtml += 
        `<a class="language-version list-group-item ${activeClass}">
@@ -113,6 +115,10 @@ function toggleActiveStatus(elem, shouldBecomeActive) {
 function showLanguages(html) {
   document.querySelector("#languagesContainer").innerHTML = html; 
   document.querySelector("#loadingLanguages").remove() 
+}
+
+function isEmptyObject(obj) {
+  return Object.entries(obj).length === 0
 }
 
 /*
