@@ -1,0 +1,64 @@
+body {
+	padding:50px; 
+	margin-right:300px;
+	line-height:1.5;
+	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+
+#directions {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 75px; 
+	border-bottom: 1px #ccc inset;
+	background-color: rgb(33, 46, 80);
+}
+
+#directions {
+	color: white; 
+} 
+
+#header #icon {
+	position: absolute; 
+	top: 9px; 
+	left: 9px;
+}
+
+#header #mekorTitle {
+    position: absolute;
+    font-size: 14px;
+    font-weight: normal;
+    left: 59px;
+    top: -12px;
+}
+
+#header #mekorSlogan {
+    position: absolute;
+    top: 38px;
+    left: 10px;
+}
+
+#directionsText {	
+    position: absolute;
+    top: 10px;
+    left: 201px;
+    border-left: 1px white solid;
+    padding-left: 32px;
+    height: 55px;
+}
+
+#directionsText h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#directionsText p {
+	margin:0;
+	font-style: italic;
+}
+
+#sampleText {
+	margin-top: 50px;
+	width: 100%;
+}
