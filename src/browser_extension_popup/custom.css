@@ -117,6 +117,10 @@ input[type="checkbox"] {
     background-color: #E91E63;
 }
 
+#buttons .list-group-item {
+    color: #212e4f;
+}
+
 #optPageContainer #wrapper {
 	position:fixed;	
 	padding-right:150px;

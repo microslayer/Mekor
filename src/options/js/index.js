@@ -11,7 +11,8 @@ function loadLanguagesAndVersions(chromeStorage) {
   const versions = fetchVersions(VERSIONS_URL)
   chromeStorage.getFromStorageAsync("languageVersions")
     .then(obj => {
-      const activeVersions = obj["languageVersions"] ? obj["languageVersions"][0] : {}
+      const activeVersions = obj["languageVersions"] && obj["languageVersions"].length > 0 ? 
+                                            obj["languageVersions"][0] : {}
       const languagesHtml = getLanguagesHtml(versions, activeVersions)
       showLanguages(languagesHtml)
       initalizeLanguageActiveEventListener(chromeStorage)

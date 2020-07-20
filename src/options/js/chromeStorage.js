@@ -2,6 +2,7 @@ class ChromeStorage {
   constructor() {
     this.LANGUAGE_VERSION_KEY = "languageVersions";
     this.VERSIONS = [] 
+    this.getSavedVersions()
   }
 
   getSavedVersions(callback) {
@@ -15,7 +16,7 @@ class ChromeStorage {
 
   setVersions(storageObj) {
     if (this.VERSIONS.length == 0 && storageObj[this.LANGUAGE_VERSION_KEY]) {
-      this.VERSIONS = storageObj[this.LANGUAGE_VERSION_KEY][0]
+      this.VERSIONS = storageObj[this.LANGUAGE_VERSION_KEY]
     }
   }
 
